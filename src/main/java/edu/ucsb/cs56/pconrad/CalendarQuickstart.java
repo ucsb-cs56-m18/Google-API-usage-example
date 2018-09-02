@@ -1,3 +1,5 @@
+package edu.ucsb.cs56.pconrad;
+
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
@@ -20,6 +22,8 @@ import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
 import java.util.Collections;
 import java.util.List;
+
+import static spark.Spark.port;
 
 public class CalendarQuickstart {
     private static final String APPLICATION_NAME = "Google Calendar API Java Quickstart";
@@ -53,6 +57,15 @@ public class CalendarQuickstart {
         return new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
     }
 
+    static int getHerokuAssignedPort() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
+    }
+
+
     public static void main(String... args) throws IOException, GeneralSecurityException {
         // Build a new authorized API client service.
         final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
@@ -72,13 +85,15 @@ public class CalendarQuickstart {
         if (items.isEmpty()) {
             System.out.println("No upcoming events found.");
         } else {
-            System.out.println("Upcoming events");
+            // spark.Spark.get("/", (req, res) -> "<b>Upcoming Events</b>\n");
             for (Event event : items) {
                 DateTime start = event.getStart().getDateTime();
                 if (start == null) {
                     start = event.getStart().getDate();
                 }
-                System.out.printf("%s (%s)\n", event.getSummary(), start);
+                // System.out.printf("%s (%s)\n", event.getSummary(), start);
+                final String result = "<b>Upcoming Events</b>" + event.getSummary() + start;
+                spark.Spark.get("/", (req, res) -> result);
             }
         }
     }

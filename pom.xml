@@ -52,13 +52,13 @@
     <dependency>
       <groupId>com.google.http-client</groupId>
       <artifactId>google-http-client-jackson2</artifactId>
-      <version>${project.http.version}</version>
+      <version>1.23.0</version>
     </dependency>
-    
+
     <dependency>
       <groupId>com.google.oauth-client</groupId>
       <artifactId>google-oauth-client-jetty</artifactId>
-      <version>${project.oauth.version}</version>
+      <version>1.23.0</version>
     </dependency>
     
   </dependencies>
@@ -111,7 +111,7 @@
             <configuration>
               <archive>
                 <manifest>
-		    <mainClass>edu.ucsb.cs56.pconrad.SparkDemo01</mainClass>
+		    <mainClass>edu.ucsb.cs56.pconrad.CalendarQuickstart</mainClass>
                 </manifest>
               </archive>
               <descriptorRefs>
@@ -135,7 +135,7 @@
 	  </execution>
 	</executions>
 	<configuration>
-	  <mainClass>edu.ucsb.cs56.pconrad.SparkDemo01</mainClass> 
+	  <mainClass>edu.ucsb.cs56.pconrad.CalendarQuickstart</mainClass> 
 	</configuration>
       </plugin>
 

@@ -85,14 +85,21 @@ public class CalendarQuickstart {
         if (items.isEmpty()) {
             System.out.println("No upcoming events found.");
         } else {
-            // spark.Spark.get("/", (req, res) -> "<b>Upcoming Events</b>\n");
             for (Event event : items) {
                 DateTime start = event.getStart().getDateTime();
                 if (start == null) {
                     start = event.getStart().getDate();
                 }
-                // System.out.printf("%s (%s)\n", event.getSummary(), start);
                 final String result = "<b>Upcoming Events</b>" + event.getSummary() + start;
+
+                port(getHerokuAssignedPort());
+        
+                System.out.println("");
+                System.out.println("(Don't worry about the warnings below about SLF4J... we'll deal with those later)");
+                System.out.println("");                       
+                System.out.println("In browser, visit: http://localhost:" + getHerokuAssignedPort() + "/hello");
+                System.out.println("");
+                
                 spark.Spark.get("/", (req, res) -> result);
             }
         }

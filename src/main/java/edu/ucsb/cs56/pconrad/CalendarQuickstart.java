@@ -83,7 +83,13 @@ public class CalendarQuickstart {
                 .execute();
         List<Event> items = events.getItems();
         if (items.isEmpty()) {
-            System.out.println("No upcoming events found.");
+           System.out.println("");
+                System.out.println("(Don't worry about the warnings below about SLF4J... we'll deal with those later)");
+                System.out.println("");                       
+                System.out.println("In browser, visit: http://localhost:" + getHerokuAssignedPort());
+                System.out.println("");
+                
+                spark.Spark.get("/", (req, res) ->  "<b>NO Upcoming Events</b>");
         } else {
             for (Event event : items) {
                 DateTime start = event.getStart().getDateTime();

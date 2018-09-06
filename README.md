@@ -20,20 +20,20 @@ Two good readings:
 
     * create a new project for your webapp from "select a project"
 
-    * select that project (it may takes a minute or so to appear after creation) and go into its dashboard
+    * select that project (it may take a few seconds or so to appear after creation) and go into its dashboard
 
     * go to "Credentials" in "My APIs" panel
 
-    * create credential -> OAuth Client ID (choose other when asked)
+    * create credential -> OAuth Client ID (according to google's tutorial, choose other for application type and give it a name )
 
-    * download the JSON file and put it into src//main/resources
+    * download the JSON file of the newly created credential to PATH_TO_YOUR_PROJECT/src//main/resources (see the download arrow on the right?)
 
-      __DO NOT UPLOAD THIS JSON FILE TO GITHUB__
-      because it contains sensitive information and you don't want people to freely use it.
-
-    * put this file into .gitignore
+    * add this file into .gitignore
 
     * _[Important]_ make sure it is ignored before you push local git commits onto GitHub.
+          
+        __DO NOT UPLOAD THIS JSON FILE TO GITHUB__
+      because it contains sensitive information and you don't want people to freely use it. There do exist a few methods to remove it from commit history, if someone still carelessly uploaded it and is unwilling to delete and start a new repository. It comes potentially at a huge cost though and we've suffered and want nobody else to experience. Just double check and don't risk!
 
   * setup in maven (pom.xml)
     * basically, add a few dependencies
@@ -63,7 +63,7 @@ Two good readings:
 
   * importing API library is almost the same as importing any other java class/library/etc...
 
-    you just "import" it: (using our mini demo project's code as an example)
+    you just "import" it: (using our mini demo's main code as an example)
   ```java
   import com.google.api.client.auth.oauth2.Credential;
   import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
@@ -85,20 +85,20 @@ Two good readings:
 
   * now it's the fun part... Time to implement your own design!
 
-    * the documentations built by API developers are always a good resources
+    * the documentations built by API developers are always good resources
 
     * in our case: https://developers.google.com/calendar/concepts/events-calendars
 
-    * a few good practices we would like to recommend are:
+    * In general, a few good practices we would like to recommend are:
       * stop panicking and divide your tasks among group members  
       in this way, you will know what to do (or more frankly, what to google first)
-      * keep everyone on track: organize your tasks and issues with simple project boards
+      * keep everyone on track: organize your tasks and issues with simple project boards shared by the entire team
         * try "Projects" (next to "Pull Request") in GitHub repo if you think it will help
       * communicate and make mutual understanding & agreements
       * work on the most important features first
 
 
-* #### As always, happy coding! You are making something great! ;)
+* #### As always, happy coding! You are about to make something great and someone WOW! ;)
 
 # Some git repos that might be helpful
 

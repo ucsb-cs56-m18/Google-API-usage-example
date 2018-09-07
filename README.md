@@ -22,7 +22,7 @@ Two good readings:
 
     * select that project (it may take a few seconds or so to appear after creation) and go into its dashboard
 
-    * go to "Credentials" in "My APIs" panel
+    * go to "Credentials" in "APIs & Services" panel
 
     * create credential -> OAuth Client ID (according to google's tutorial, choose other for application type and give it a name )
 
